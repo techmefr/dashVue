@@ -1,0 +1,17 @@
+/**
+ * src/styles/settings.scss
+ *
+ * Configuration des variables SCSS et modifications de Vuetify
+ */
+
+// Active le support des variables SCSS de Vuetify
+@use 'vuetify/settings' with (
+  $body-font-family: 'Roboto, sans-serif', // ✅ Change la police
+  $border-radius-root: 12px, // ✅ Ajoute des coins arrondis
+  $container-max-widths: ( // ✅ Ajuste la largeur des conteneurs
+    'sm': 600px,
+    'md': 900px,
+    'lg': 1200px
+  ),
+  $button-text-transform: none // ✅ Désactive la transformation en majuscules des boutons
+);
