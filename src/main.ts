@@ -1,23 +1,26 @@
-// src/main.ts
-import { createApp } from 'vue';
-import App from './App.vue';
-import './style.css';
+import { createRouter, createWebHistory } from 'vue-router';
 
-// ⚡ Import de Vuetify
-import 'vuetify/styles';
-import { createVuetify } from 'vuetify';
-import * as components from 'vuetify/components';
-import * as directives from 'vuetify/directives';
+// Importez vos composants de page
+import index from '@/pages/index.vue';
+import about from '@/pages/about.vue'
 
-// ⚡ Création de l'instance Vuetify
-const vuetify = createVuetify({
-  components,
-  directives,
+const routes = [
+  {
+    path: '/',
+    name: 'index',
+    component: index,
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: about,
+  }
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
 });
 
-const app = createApp(App);
 
-// ⚡ Vuetify globalement
-app.use(vuetify);
-
-app.mount('#app');
+export default router;

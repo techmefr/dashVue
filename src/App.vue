@@ -1,9 +1,11 @@
-<script setup lang="ts"></script>
-
 <template>
-  <v-app> </v-app>
+  <v-app>
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
-<style scoped>
-@import 'vuetify/styles';
-</style>
+<script lang="ts" setup>
+  //
+</script>
