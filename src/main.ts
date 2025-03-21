@@ -1,26 +1,16 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createApp } from 'vue';
+import App from './App.vue'; // 🔥 Vue charge ici App.vue
+import router from './router'; // 🔥 Vue charge ici le Router
 
-// Importez vos composants de page
-import index from '@/pages/index.vue';
-import about from '@/pages/about.vue'
+import 'vuetify/styles';
+import { createVuetify } from 'vuetify';
+import * as components from 'vuetify/components';
+import * as directives from 'vuetify/directives';
 
-const routes = [
-  {
-    path: '/',
-    name: 'index',
-    component: index,
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: about,
-  }
-];
+const vuetify = createVuetify({ components, directives });
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-});
+const app = createApp(App);
+app.use(router); // 🔥 Ajoute Vue Router
+app.use(vuetify); // 🔥 Ajoute Vuetify
 
-
-export default router;
+app.mount('#app'); // 🔥 Monte Vue dans <div id="app">
