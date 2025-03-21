@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // Importations
 import { ref, watch, onMounted } from 'vue';
+import useGroupApps from '../functions/useGroupApps.ts'
 
 // Variables
 let selectedTabs = ref(0);
@@ -8,10 +9,10 @@ const links = ref(["Dashboard", "About"]);
 let apiResult = ref(0);
 let groupedData = ref([]);
 
-// Func
-watch(apiResult(newValue) => {
+// Vue func
+watch(apiResult, (newValue) => {
   groupedData.value = useGroupApps(newValue.data);
-})
+});
 
 //API
 const fetchMonetizationApi = async () => {
@@ -92,7 +93,7 @@ onMounted(async () => { fetchMonetizationApi(); })
           <v-col col="12" sm="8">
             <v-sheet v-if="selectedTabs == 0" min-height="70vh" rounded="lg" class="pa-4">
               <h2 class="mt-4">App lists :</h2>
-              {{ groupedData }}
+              <v-data-table v-if="groupedData" :items="groupedData"></v-data-table>
             </v-sheet>
             <v-sheet v-else min-height="70vh" rounded="lg" class="pa-2 pt-4">Page 1</v-sheet>
           </v-col>
